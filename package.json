@@ -4,7 +4,11 @@
   "description": "Express boilerplate with TypeScript",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "rm -rf ./dev/* && webpack --watch --config ./config/webpack.dev.js",
+    "build:prod": "rm -rf ./prod/* && webpack --config ./config/webpack.prod.js",
+    "serve:dev": "npm run build:dev",
+    "serve:dev:restart": "nodemon -r dotenv/config ./dev/index.server.js",
+    "serve:prod": "node -r dotenv/config ./dev/index.server.js"
   },
   "repository": {
     "type": "git",

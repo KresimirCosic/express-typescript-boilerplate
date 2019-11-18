@@ -9,13 +9,12 @@ const configuration = merge(common, {
   output: {
     path: path.resolve(__dirname, "../dev"),
     filename: "[name].server.js"
-  }
-  // TODO (this plugin will restart the server eventually)
-  // plugins: [
-  //   new webpackShellPlugin({
-  //     onBuildEnd: ["npm run some:command"]
-  //   })
-  // ]
+  },
+  plugins: [
+    new webpackShellPlugin({
+      onBuildEnd: ["npm run serve:dev:restart"]
+    })
+  ]
 });
 
 module.exports = configuration;
