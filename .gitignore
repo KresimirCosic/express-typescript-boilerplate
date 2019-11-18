@@ -1,2 +1,9 @@
 # General
 node_modules/
+bower_components/
+dev/
+prod/
+static/
+
+# Environment variables
+.env
