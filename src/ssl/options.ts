@@ -26,11 +26,16 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.p
 import fs from "fs";
 import path from "path";
 
-export const SSLOptions = () => {
-  const options = {
+export interface ISSLOptions {
+  key: Buffer;
+  cert: Buffer;
+}
+
+export const enableSSL = () => {
+  const SSLOptions = {
     key: fs.readFileSync(path.resolve(__dirname, "./cert.key")),
     cert: fs.readFileSync(path.resolve(__dirname, "./cert.pem"))
   };
 
-  return options;
+  return SSLOptions;
 };
