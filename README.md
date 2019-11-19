@@ -111,9 +111,9 @@ DNS.2 = localhost.com
 DNS.3 = localhost
 ```
 
-> I would change only the `C = HR` and `L = Tenja` parts, but don't believe it too necessary, since it's just information. The way to create these has been found on this [Stack Overflow issue](https://stackoverflow.com/questions/21397809/create-a-trusted-self-signed-ssl-cert-for-localhost-for-use-with-express-node).
+> I would change only the `C = HR` and `L = Tenja` parts, but don't believe it's too necessary, since it's just irrelevant information - I entered my country and city name. The way to create these has been found on this [Stack Overflow issue](https://stackoverflow.com/questions/21397809/create-a-trusted-self-signed-ssl-cert-for-localhost-for-use-with-express-node).
 
-- Now (while inside the `my-app/backend/src/ssl/) directory, use this command to create the certificate and key:
+- Now (while inside the `my-app/backend/src/ssl/`) directory, use this command to create the certificate and key:
 
 ```sh
 $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.pem -config req.cnf -sha256
@@ -121,7 +121,7 @@ $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert
 
 ## **Usage**
 
-There are two basic usages; either in _development_ or _production_ phase. During _development_, you are probably going to use `create-react-app`'s `start` script (with `HTTPS=true` forced while being served).
+There are two basic usages; either in _development_ or _production_ phase. During _development_, you are probably going to use `create-react-app`'s `start` script (with `HTTPS=true` forced while being served). This will host the app on a different port (default I believe is _3000_). The _backend_ portion will be hosted on `http://localhost:8080`, while the `CRA` will open the app on `https://localhost:3000`.
 
 ### **development**
 
@@ -142,3 +142,8 @@ $ npm run serve:prod
 ```
 
 > This will build the _backend_ files, minify them and disable any `devtool` to reduce the file size. This will also build the `create-react-app`'s files via `CRA`'s `build` script command, copy those files over to a directory named `static`, copy the certificate and key files from the `src` directory into `static` directory as well, and start up the server. The static files will be served through _SSL_/_TLS_ to enable better development with things like cookie sessions that require secure flags and similar.
+
+## **TO DOs**
+
+- Make the console logs prettier and easier to read via [chalk](https://www.npmjs.com/package/chalk) package
+- Re-configure the _development_ phase if necessary. There still might be issues sending the cookies since the _backend_ is on regular _HTTP_ protocol. The production phase should be good to go, just start it up and open up the link listed in the console - `https://localhost:8443`
