@@ -1,6 +1,7 @@
 const webpackNodeExternals = require("webpack-node-externals");
 
 const configuration = {
+  target: "node",
   entry: {
     index: "./src/index.ts"
   },

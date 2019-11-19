@@ -1,6 +1,6 @@
 {
   "name": "express-typescript-boilerplate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Express boilerplate with TypeScript",
   "main": "./src/index.ts",
   "scripts": {
@@ -9,7 +9,7 @@
     "build:prod": "rm -rf ./prod/* && mkdir ./prod/ssl && cp ./src/ssl/cert.* ./prod/ssl && webpack --config ./config/webpack.prod.js",
     "serve:dev": "npm run build:dev",
     "serve:dev:restart": "nodemon -r dotenv/config ./dev/index.server.js",
-    "serve:prod": "npm run build:prod && node -r dotenv/config ./dev/index.server.js"
+    "serve:prod": "npm run build:prod && node -r dotenv/config ./prod/index.server.js"
   },
   "repository": {
     "type": "git",
