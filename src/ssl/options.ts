@@ -4,11 +4,11 @@ distinguished_name = req_distinguished_name
 x509_extensions = v3_req
 prompt = no
 [req_distinguished_name]
-C = Country initials like US, RO, GE
-ST = State
-L = Location
-O = Organization Name
-OU = Organizational Unit 
+C = HR
+ST = .
+L = Tenja
+O = .
+OU = . 
 CN = www.localhost.com
 [v3_req]
 keyUsage = critical, digitalSignature, keyAgreement
