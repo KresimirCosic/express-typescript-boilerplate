@@ -1,12 +1,12 @@
 {
   "name": "express-typescript-boilerplate",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Express boilerplate with TypeScript",
   "main": "./src/index.ts",
   "scripts": {
-    "build:static": "rm -rf ./static/* && cd ../frontend && npm run build && cp -r ./build/* ../backend/static",
+    "build:static": "mkdir -p ./static && rm -rf ./static/* && cd ../frontend && npm run build && cp -r ./build/* ../backend/static",
     "build:dev": "rm -rf ./dev/* && webpack --watch --config ./config/webpack.dev.js",
-    "build:prod": "npm run build:static && rm -rf ./prod/* && cp ./src/ssl/cert.* ./prod && webpack --config ./config/webpack.prod.js",
+    "build:prod": "npm run build:static && mkdir -p ./prod && rm -rf ./prod/* && cp ./src/ssl/cert.* ./prod && webpack --config ./config/webpack.prod.js",
     "serve:dev": "npm run build:dev",
     "serve:dev:restart": "nodemon -r dotenv/config ./dev/index.server.js",
     "serve:prod": "npm run build:prod && node -r dotenv/config ./prod/index.server.js"
