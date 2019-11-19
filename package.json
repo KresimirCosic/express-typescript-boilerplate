@@ -6,7 +6,7 @@
   "scripts": {
     "build:static": "rm -rf ./static/* && cd ../frontend && npm run build && cp ./build* ../backend/static",
     "build:dev": "rm -rf ./dev/* && webpack --watch --config ./config/webpack.dev.js",
-    "build:prod": "npm run build:static && rm -rf ./prod/* && webpack --config ./config/webpack.prod.js",
+    "build:prod": "rm -rf ./prod/* && mkdir ./prod/ssl && cp ./src/ssl/cert.* ./prod/ssl && webpack --config ./config/webpack.prod.js",
     "serve:dev": "npm run build:dev",
     "serve:dev:restart": "nodemon -r dotenv/config ./dev/index.server.js",
     "serve:prod": "npm run build:prod && node -r dotenv/config ./dev/index.server.js"
