@@ -7,3 +7,8 @@ static/
 
 # Environment variables
 .env
+
+# SSL/TLS
+cert.key
+cert.pem
+req.cnf
